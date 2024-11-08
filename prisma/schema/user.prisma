@@ -1,0 +1,13 @@
+model User {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  email      String    @unique
+  name       String    @unique
+  password   String
+  avatarPath String    @default("/uploads/default-avatar.png") @map("avatar_path")
+  phone      String    @default("")
+  orders     Order[]
+  reviews    Review[]
+  favourites Product[]
+}

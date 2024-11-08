@@ -1,0 +1,13 @@
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int?     @map("order_id")
+  quantity  Int
+  price     Int
+  product   Product? @relation(fields: [productId], references: [id])
+  productId Int?     @map("product_id")
+
+  @@map("Order_item")
+}
